@@ -1,9 +1,6 @@
 package com.maharishi.may.ereverse.ereverseeauctionsystem.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -17,8 +14,8 @@ public class SystemAdmin extends Employee{
     public SystemAdmin() {
     }
 
-    public SystemAdmin(String firstName, String middleName, String lastName, Date birthDate, String sex, String qualification, String roleName) {
-        super(firstName, middleName, lastName, birthDate, sex, roleName);
+    public SystemAdmin(String firstName, String middleName, String lastName, Date birthDate, String sex, String qualification, String roleName, Account account) {
+        super(firstName, middleName, lastName, birthDate, sex, roleName, account);
         this.qualification = qualification;
     }
 

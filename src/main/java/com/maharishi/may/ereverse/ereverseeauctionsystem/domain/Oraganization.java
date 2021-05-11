@@ -1,9 +1,6 @@
 package com.maharishi.may.ereverse.ereverseeauctionsystem.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -13,16 +10,23 @@ public class Oraganization extends Role{
     private Long id;
 
     private String orgName;
+
+    @Column(name = "fullName")
     private String representativeFullName;
     private Date recordedDate;
+
+    @Column(name = "attachment")
     byte[] legalDocumentAttachement;
     Date verificaitionDate;
+
+    @ManyToOne
+    private SystemAdmin sysAdmin;
 
     public Oraganization() {
     }
 
-    public Oraganization(String orgName, String representativeFullName, Date recordedDate, byte[] legalDocumentAttachement, Date verificaitionDate, String roleName) {
-        super(roleName);
+    public Oraganization(String orgName, String representativeFullName, Date recordedDate, byte[] legalDocumentAttachement, Date verificaitionDate, String roleName, Account account) {
+        super(account,roleName);
         this.orgName = orgName;
         this.representativeFullName = representativeFullName;
         this.recordedDate = recordedDate;
@@ -76,5 +80,13 @@ public class Oraganization extends Role{
 
     public void setVerificaitionDate(Date verificaitionDate) {
         this.verificaitionDate = verificaitionDate;
+    }
+
+    public SystemAdmin getSysAdmin() {
+        return sysAdmin;
+    }
+
+    public void setSysAdmin(SystemAdmin sysAdmin) {
+        this.sysAdmin = sysAdmin;
     }
 }

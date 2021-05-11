@@ -19,8 +19,9 @@ public class Supplier extends Oraganization {
     public Supplier() {
     }
 
-    public Supplier(String orgName, String representativeFullName, Date recordedDate, byte[] legalDocumentAttachement, Date verificaitionDate, String roleName, boolean isLicenseRenewed, String tinNumber, String licenseNo) {
-        super(orgName, representativeFullName, recordedDate, legalDocumentAttachement, verificaitionDate, roleName);
+    public Supplier(String orgName, String representativeFullName, Date recordedDate, byte[] legalDocumentAttachement, Date verificaitionDate,
+                    String roleName, boolean isLicenseRenewed, String tinNumber, String licenseNo, Account account) {
+        super(orgName, representativeFullName, recordedDate, legalDocumentAttachement, verificaitionDate, roleName, account);
         this.isLicenseRenewed = isLicenseRenewed;
         this.tinNumber = tinNumber;
         this.licenseNo = licenseNo;

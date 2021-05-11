@@ -1,9 +1,6 @@
 package com.maharishi.may.ereverse.ereverseeauctionsystem.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -16,6 +13,12 @@ public class Item {
     private String specification;
     private BigDecimal leastPrice;
     private Date decisionDate;
+
+    @ManyToOne
+    private Supplier supplier;
+
+    @ManyToOne
+    private Auction auction;
 
     public Item() {
     }
@@ -56,5 +59,21 @@ public class Item {
 
     public void setDecisionDate(Date decisionDate) {
         this.decisionDate = decisionDate;
+    }
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
+
+    public Auction getAuction() {
+        return auction;
+    }
+
+    public void setAuction(Auction auction) {
+        this.auction = auction;
     }
 }

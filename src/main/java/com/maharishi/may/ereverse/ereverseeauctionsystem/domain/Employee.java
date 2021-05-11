@@ -21,8 +21,8 @@ public class Employee extends Role{
     public Employee() {
     }
 
-    public Employee(String firstName, String middleName, String lastName, Date birthDate, String sex, String roleName) {
-        super(roleName);
+    public Employee(String firstName, String middleName, String lastName, Date birthDate, String sex, String roleName, Account account) {
+        super(account,roleName);
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;

@@ -15,8 +15,9 @@ public class Buyer extends Oraganization {
     public Buyer() {
     }
 
-    public Buyer(String orgName, String representativeFullName, Date recordedDate, byte[] legalDocumentAttachement, Date verificaitionDate, String roleName) {
-        super(orgName, representativeFullName, recordedDate, legalDocumentAttachement, verificaitionDate, roleName);
+    public Buyer(String orgName, String representativeFullName, Date recordedDate,
+                 byte[] legalDocumentAttachement, Date verificaitionDate, String roleName, Account account) {
+        super(orgName, representativeFullName, recordedDate, legalDocumentAttachement, verificaitionDate, roleName, account);
     }
 
     @Override

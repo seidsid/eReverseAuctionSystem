@@ -1,10 +1,8 @@
 package com.maharishi.may.ereverse.ereverseeauctionsystem.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Auction {
@@ -14,6 +12,9 @@ public class Auction {
 
     private Date postDate;
     private Date closureDate;
+
+    @OneToMany
+    List<Item> items;
 
     public Auction() {
     }
@@ -45,5 +46,13 @@ public class Auction {
 
     public void setClosureDate(Date closureDate) {
         this.closureDate = closureDate;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
     }
 }

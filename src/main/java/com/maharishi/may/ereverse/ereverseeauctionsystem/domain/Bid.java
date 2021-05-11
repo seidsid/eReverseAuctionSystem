@@ -1,9 +1,6 @@
 package com.maharishi.may.ereverse.ereverseeauctionsystem.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -13,6 +10,15 @@ public class Bid {
     private Long id;
 
     private BigDecimal price;
+
+    @ManyToOne
+    private Supplier supplier;
+
+    @ManyToOne
+    private Item item;
+
+    @ManyToOne
+    private Auction auction;
 
     public Bid() {
     }
@@ -35,5 +41,29 @@ public class Bid {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
+    }
+
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public Auction getAuction() {
+        return auction;
+    }
+
+    public void setAuction(Auction auction) {
+        this.auction = auction;
     }
 }

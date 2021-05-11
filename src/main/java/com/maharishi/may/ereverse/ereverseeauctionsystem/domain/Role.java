@@ -1,9 +1,6 @@
 package com.maharishi.may.ereverse.ereverseeauctionsystem.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Role {
@@ -12,11 +9,15 @@ public class Role {
     private Long id;
     private String roleName;
 
+    @ManyToOne
+    private Account account;
+
     public Role(){
     }
 
-    public Role(String roleName) {
+    public Role(Account account, String roleName) {
         this.roleName = roleName;
+        this.account = account;
     }
 
     public Long getId() {
@@ -33,5 +34,13 @@ public class Role {
 
     public void setRoleName(String roleName) {
         this.roleName = roleName;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 }
