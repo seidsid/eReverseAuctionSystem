@@ -1,0 +1,49 @@
+package com.maharishi.may.ereverse.ereverseauctionsystem.buyer.controller.viewmodel;
+
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotEmpty;
+
+public class BuyerViewModel {
+    @NotEmpty
+    private String username;
+    @Length(min = 8,max = 255)
+    private String password;
+    @NotEmpty
+    private String organizationName;
+
+    @NotEmpty
+    private String representativeFullName;
+
+    public BuyerViewModel(String username, String password, String organizationName,String representativeFullName) {
+        this.username = username;
+        this.password = password;
+        this.organizationName = organizationName;
+        this.representativeFullName=representativeFullName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getOrganizationName() {
+        return organizationName;
+    }
+
+    public String getRepresentativeFullName() {
+        return representativeFullName;
+    }
+
+    @Override
+    public String toString() {
+        return "BuyerViewModel{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", organizationName='" + organizationName + '\'' +
+                '}';
+    }
+}

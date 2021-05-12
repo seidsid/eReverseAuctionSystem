@@ -1,13 +1,10 @@
-package com.maharishi.may.ereverse.ereverseeauctionsystem.domain;
+package com.maharishi.may.ereverse.ereverseauctionsystem.domain;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Oraganization extends Role{
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+public class Organization extends Role{
 
     private String orgName;
 
@@ -17,15 +14,17 @@ public class Oraganization extends Role{
 
     @Column(name = "attachment")
     byte[] legalDocumentAttachement;
+
+    @Temporal(TemporalType.TIMESTAMP)
     Date verificaitionDate;
 
     @ManyToOne
     private SystemAdmin sysAdmin;
 
-    public Oraganization() {
+    public Organization() {
     }
 
-    public Oraganization(String orgName, String representativeFullName, Date recordedDate, byte[] legalDocumentAttachement, Date verificaitionDate, String roleName, Account account) {
+    public Organization(String orgName, String representativeFullName, Date recordedDate, byte[] legalDocumentAttachement, Date verificaitionDate, String roleName, Account account) {
         super(account,roleName);
         this.orgName = orgName;
         this.representativeFullName = representativeFullName;
@@ -33,13 +32,9 @@ public class Oraganization extends Role{
         this.legalDocumentAttachement = legalDocumentAttachement;
         this.verificaitionDate = verificaitionDate;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public boolean isActivated()
+    {
+        return sysAdmin!=null;
     }
 
     public String getOrgName() {

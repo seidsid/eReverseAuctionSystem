@@ -1,4 +1,4 @@
-package com.maharishi.may.ereverse.ereverseeauctionsystem.domain;
+package com.maharishi.may.ereverse.ereverseauctionsystem.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,10 +7,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Supplier extends Oraganization {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id;
+public class Supplier extends Organization {
 
     private boolean isLicenseRenewed;
     private String tinNumber;
@@ -25,16 +22,6 @@ public class Supplier extends Oraganization {
         this.isLicenseRenewed = isLicenseRenewed;
         this.tinNumber = tinNumber;
         this.licenseNo = licenseNo;
-    }
-
-    @Override
-    public Long getId() {
-        return id;
-    }
-
-    @Override
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public boolean isLicenseRenewed() {

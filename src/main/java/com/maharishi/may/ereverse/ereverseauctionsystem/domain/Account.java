@@ -1,4 +1,4 @@
-package com.maharishi.may.ereverse.ereverseeauctionsystem.domain;
+package com.maharishi.may.ereverse.ereverseauctionsystem.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,19 +11,24 @@ public class Account {
     private Long id;
 
     private String password;
+    @Column(unique = true)
     private String userName;
 
-    @OneToMany
+    @OneToMany(mappedBy = "account",cascade = CascadeType.PERSIST)
     List<Role> roles;
 
     public Account() {
     }
 
-    public Account(String password, String userName) {
+    public Account(String password, String userName,List<Role> roles) {
         this.password = password;
         this.userName = userName;
-        roles = new ArrayList<>();
-        roles.add(new Role());
+        if(roles==null||roles.isEmpty())
+        {
+            throw new RuntimeException("roles must not be empty");
+        }
+        roles.forEach(r->r.setAccount(this));
+        this.roles=roles;
     }
 
     public Long getId() {
