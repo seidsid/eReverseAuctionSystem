@@ -17,12 +17,16 @@ public class Account {
     @OneToMany(mappedBy = "account",cascade = CascadeType.PERSIST)
     List<Role> roles;
 
+    @Embedded
+    private Address address;
+
     public Account() {
     }
 
-    public Account(String password, String userName,List<Role> roles) {
+    public Account(String password, String userName,List<Role> roles,Address address) {
         this.password = password;
         this.userName = userName;
+        this.address=address;
         if(roles==null||roles.isEmpty())
         {
             throw new RuntimeException("roles must not be empty");

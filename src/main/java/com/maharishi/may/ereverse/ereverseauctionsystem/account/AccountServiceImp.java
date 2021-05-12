@@ -13,7 +13,11 @@ public class AccountServiceImp implements AccountService{
     }
 
     @Override
-    public void create(Account account) {
+    public void create(Account account){
+        if(accountRepository.findByUserName(account.getUserName())!=null)
+        {
+            throw new DuplicateAccountException(String.format("duplicate account for %s",account.getUserName()));
+        }
         accountRepository.save(account);
     }
 }
