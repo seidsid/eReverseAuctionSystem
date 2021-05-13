@@ -1,20 +1,29 @@
-package com.maharishi.may.ereverse.ereverseeauctionsystem.domain;
+package com.maharishi.may.ereverse.ereverseauctionsystem.domain;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "Account")
 public class Account {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
     private String password;
     private String userName;
 
-    @OneToMany
-    List<Role> roles;
+    @OneToMany (
+            mappedBy = "account",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    private List<Role> roles = new ArrayList<>();
+
+    @OneToOne
+    @JoinColumn(name = "addressId")
+    private Address address;
 
     public Account() {
     }
@@ -22,10 +31,14 @@ public class Account {
     public Account(String password, String userName) {
         this.password = password;
         this.userName = userName;
-        roles = new ArrayList<>();
-        roles.add(new Role());
     }
 
+    public void addRole(Role role){
+        roles.add(role);
+    }
+    public void removeRole(Role role){
+        roles.remove(role);
+    }
     public Long getId() {
         return id;
     }
@@ -56,5 +69,13 @@ public class Account {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

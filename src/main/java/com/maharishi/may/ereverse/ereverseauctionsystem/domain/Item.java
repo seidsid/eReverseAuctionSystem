@@ -1,4 +1,4 @@
-package com.maharishi.may.ereverse.ereverseeauctionsystem.domain;
+package com.maharishi.may.ereverse.ereverseauctionsystem.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -14,11 +14,17 @@ public class Item {
     private BigDecimal leastPrice;
     private Date decisionDate;
 
-    @ManyToOne
+    @OneToOne
+    @JoinColumn(name= "supplierId", referencedColumnName = "id")
     private Supplier supplier;
 
     @ManyToOne
+    @JoinColumn(name= "auctionId", referencedColumnName = "id")
     private Auction auction;
+
+    @OneToOne
+    @JoinColumn(name= "decisionId", referencedColumnName = "id")
+    private Decision decision;
 
     public Item() {
     }
@@ -75,5 +81,13 @@ public class Item {
 
     public void setAuction(Auction auction) {
         this.auction = auction;
+    }
+
+    public Decision getDecision() {
+        return decision;
+    }
+
+    public void setDecision(Decision decision) {
+        this.decision = decision;
     }
 }

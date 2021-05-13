@@ -1,12 +1,10 @@
-package com.maharishi.may.ereverse.ereverseeauctionsystem.domain;
+package com.maharishi.may.ereverse.ereverseauctionsystem.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "Employee")
 public class Employee extends Role{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
