@@ -1,5 +1,6 @@
-package com.maharishi.may.ereverse.ereverseauctionsystem.account;
+package com.maharishi.may.ereverse.ereverseauctionsystem.account.service;
 
+import com.maharishi.may.ereverse.ereverseauctionsystem.account.DuplicateAccountException;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Account;
 
 public interface AccountService {
@@ -11,4 +12,5 @@ public interface AccountService {
     }
     Account findByUsernameAndPassword(String username,String password);
     Account findByUsername(String username);
+    Account authenticate(String username,String password);
 }

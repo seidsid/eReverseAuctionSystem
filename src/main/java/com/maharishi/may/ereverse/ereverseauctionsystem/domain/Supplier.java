@@ -1,15 +1,12 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
 public class Supplier extends Organization {
 
-    private boolean isLicenseRenewed;
+    private boolean isLicenseRenewed=true;
     private String tinNumber;
     private String licenseNo;
 
@@ -17,9 +14,8 @@ public class Supplier extends Organization {
     }
 
     public Supplier(String orgName, String representativeFullName, Date recordedDate, byte[] legalDocumentAttachement, Date verificaitionDate,
-                    String roleName, boolean isLicenseRenewed, String tinNumber, String licenseNo, Account account) {
+                    String roleName, String tinNumber, String licenseNo, Account account) {
         super(orgName, representativeFullName, recordedDate, legalDocumentAttachement, verificaitionDate, roleName, account);
-        this.isLicenseRenewed = isLicenseRenewed;
         this.tinNumber = tinNumber;
         this.licenseNo = licenseNo;
     }

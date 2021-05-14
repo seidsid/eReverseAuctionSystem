@@ -23,6 +23,12 @@ public class Bid {
     public Bid() {
     }
 
+    public Bid(BigDecimal price, Supplier supplier, Item item) {
+        this.price = price;
+        this.supplier = supplier;
+        this.item = item;
+    }
+
     public Bid(BigDecimal price) {
         this.price = price;
     }

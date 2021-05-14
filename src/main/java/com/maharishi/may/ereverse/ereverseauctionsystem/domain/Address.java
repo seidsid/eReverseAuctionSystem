@@ -1,6 +1,6 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.domain;
 
-import javax.persistence.*;
+import javax.persistence.Embeddable;
 import javax.validation.constraints.Email;
 
 @Embeddable

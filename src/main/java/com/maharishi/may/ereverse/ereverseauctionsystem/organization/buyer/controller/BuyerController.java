@@ -1,14 +1,14 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.organization.buyer.controller;
 
-import com.maharishi.may.ereverse.ereverseauctionsystem.account.AccountService;
+import com.maharishi.may.ereverse.ereverseauctionsystem.account.service.AccountService;
 import com.maharishi.may.ereverse.ereverseauctionsystem.account.DuplicateAccountException;
+import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Account;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Auction;
+import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Buyer;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Item;
 import com.maharishi.may.ereverse.ereverseauctionsystem.organization.buyer.controller.viewmodel.AuctionViewModel;
 import com.maharishi.may.ereverse.ereverseauctionsystem.organization.buyer.controller.viewmodel.BuyerViewModel;
 import com.maharishi.may.ereverse.ereverseauctionsystem.organization.buyer.service.BuyerService;
-import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Account;
-import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Buyer;
 import com.maharishi.may.ereverse.ereverseauctionsystem.organization.buyer.service.InvalidDateException;
 import com.maharishi.may.ereverse.ereverseauctionsystem.security.JWTService;
 import org.slf4j.Logger;
@@ -19,7 +19,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Date;
 import java.util.List;
@@ -38,22 +41,6 @@ public class BuyerController {
         this.buyerService = buyerService;
         this.accountService=accountService;
         this.jwtService=jwtService;
-    }
-    @PostMapping("/authenticate")
-    public ResponseEntity<Map<String,String>> authenticate(@RequestBody Map<String,String> request)
-    {
-        if(!request.containsKey("username")||!request.containsKey("password"))
-        {
-            return ResponseEntity.badRequest().body(Map.of("reason","username and phoneNumber must not be empty"));
-        }
-        String username=request.get("username");
-        String password=request.get("password");
-        Account account;
-        if((account=buyerService.authenticate(username,password))==null)
-        {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("result","bad credential"));
-        }
-        return ResponseEntity.ok(Map.of("token",jwtService.generateToken(account)));
     }
     @PostMapping
     public ResponseEntity<Map<String,String>> createAccount(@Validated @RequestBody BuyerViewModel buyerViewModel, BindingResult bindingResult)

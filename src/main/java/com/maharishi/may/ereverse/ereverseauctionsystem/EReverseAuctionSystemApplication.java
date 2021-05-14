@@ -1,13 +1,12 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem;
 
-import com.maharishi.may.ereverse.ereverseauctionsystem.account.AccountService;
+import com.maharishi.may.ereverse.ereverseauctionsystem.account.service.AccountService;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Account;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Address;
+import com.maharishi.may.ereverse.ereverseauctionsystem.domain.SystemAdmin;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import com.maharishi.may.ereverse.ereverseauctionsystem.domain.SystemAdmin;
-import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.Date;

@@ -1,15 +1,12 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.security;
 
-import com.maharishi.may.ereverse.ereverseauctionsystem.account.AccountService;
+import com.maharishi.may.ereverse.ereverseauctionsystem.account.service.AccountService;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Account;
-import io.jsonwebtoken.lang.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class AccountUserDetailsService implements UserDetailsService

@@ -1,11 +1,11 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.organization.buyer.service;
 
-import com.maharishi.may.ereverse.ereverseauctionsystem.account.AccountService;
+import com.maharishi.may.ereverse.ereverseauctionsystem.account.service.AccountService;
 import com.maharishi.may.ereverse.ereverseauctionsystem.auction.repository.AuctionRepository;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Account;
-import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Organization;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Auction;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Buyer;
+import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Organization;
 import com.maharishi.may.ereverse.ereverseauctionsystem.organization.buyer.repository.BuyerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class BuyerService {
     private AccountService accountService;
     private AuctionRepository auctionRepository;
     @Autowired
-    public BuyerService(BuyerRepository buyerRepository, AccountService accountService,AuctionRepository auctionRepository) {
+    public BuyerService(BuyerRepository buyerRepository, AccountService accountService, AuctionRepository auctionRepository) {
         this.buyerRepository = buyerRepository;
         this.accountService=accountService;
         this.auctionRepository=auctionRepository;

@@ -24,23 +24,6 @@ public class AdminController {
         this.adminService = adminService;
         this.jwtService=jwtService;
     }
-
-    @PostMapping("/authenticate")
-    public ResponseEntity<Map<String,String>> authenticate(@RequestBody Map<String,String> request)
-    {
-        if(!request.containsKey("username")||!request.containsKey("password"))
-        {
-            return ResponseEntity.badRequest().body(Map.of("reason","username and phoneNumber must not be empty"));
-        }
-        String username=request.get("username");
-        String password=request.get("password");
-        Account account;
-        if((account=adminService.authenticate(username,password))==null)
-        {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(Map.of("result","bad credential"));
-        }
-        return ResponseEntity.ok(Map.of("token",jwtService.generateToken(account)));
-    }
     @PostMapping("/activate")
     public ResponseEntity<Map<String,String>> activate(Authentication principal, @RequestBody Map<String, String> request)
     {

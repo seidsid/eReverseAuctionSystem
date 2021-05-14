@@ -1,6 +1,8 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.domain;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

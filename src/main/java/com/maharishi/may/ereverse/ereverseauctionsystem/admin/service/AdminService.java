@@ -1,6 +1,6 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.admin.service;
 
-import com.maharishi.may.ereverse.ereverseauctionsystem.account.AccountService;
+import com.maharishi.may.ereverse.ereverseauctionsystem.account.service.AccountService;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Account;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Organization;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.SystemAdmin;

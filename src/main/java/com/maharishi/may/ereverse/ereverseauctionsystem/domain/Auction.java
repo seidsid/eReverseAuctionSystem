@@ -30,7 +30,10 @@ public class Auction {
         this.items=items;
         items.forEach(item -> item.setAuction(this));
     }
-
+    public boolean isOpen()
+    {
+        return closureDate.compareTo(new Date())==1;
+    }
     public Long getId() {
         return id;
     }

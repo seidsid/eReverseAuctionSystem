@@ -45,8 +45,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                 .httpBasic()
                 .disable()
                 .authorizeRequests()
-                .mvcMatchers("/buyer","buyer/authenticate","admin/authenticate").permitAll()
+                .mvcMatchers("/buyer","/supplier","/authenticate").permitAll()
                 .mvcMatchers("/admin/activate").hasAuthority("admin")
+                .mvcMatchers("/supplier/**").hasAuthority("supplier")
+                .mvcMatchers("/buyer/**").hasAuthority("buyer")
                 .anyRequest().authenticated();
     }
     @Bean
