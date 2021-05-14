@@ -1,12 +1,14 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @Embeddable
 public class Address {
 
     private String streetNo;
     private String city;
+    @Email
     private String email;
 
     public Address() {

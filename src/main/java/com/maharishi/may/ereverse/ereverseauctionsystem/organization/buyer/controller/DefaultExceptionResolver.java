@@ -1,6 +1,5 @@
-package com.maharishi.may.ereverse.ereverseauctionsystem.buyer.controller;
+package com.maharishi.may.ereverse.ereverseauctionsystem.organization.buyer.controller;
 
-import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Account;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ControllerAdvice;

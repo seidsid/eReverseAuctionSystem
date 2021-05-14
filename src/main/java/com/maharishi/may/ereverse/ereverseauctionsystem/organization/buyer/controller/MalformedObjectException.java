@@ -1,4 +1,4 @@
-package com.maharishi.may.ereverse.ereverseauctionsystem.buyer.controller;
+package com.maharishi.may.ereverse.ereverseauctionsystem.organization.buyer.controller;
 
 import org.springframework.validation.BindingResult;
 

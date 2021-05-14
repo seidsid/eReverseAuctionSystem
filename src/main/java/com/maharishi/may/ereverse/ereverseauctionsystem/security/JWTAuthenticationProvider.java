@@ -17,7 +17,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class JWTAuthenticationProvider implements AuthenticationProvider
@@ -47,20 +49,8 @@ public class JWTAuthenticationProvider implements AuthenticationProvider
                     .parseClaimsJws(jwtToken)
                     .getBody();
             UserDetails userDetails;
-            if(claims.get("role").toString().equalsIgnoreCase("user"))
-            {
-                userDetails=accountUserDetailsService.loadUserByUsername(claims.get("username").toString());
-                if(!userDetails.isAccountNonLocked())throw new LockedException("account is locked for "+userDetails.getUsername());
-                return new UsernamePasswordAuthenticationToken(userDetails.getUsername(),userDetails.getPassword(), List.of(new SimpleGrantedAuthority("user")));
-            }
-            else if(claims.get("role").toString().equalsIgnoreCase("pay"))
-            {
-                return new UsernamePasswordAuthenticationToken("payment","pass",List.of(new SimpleGrantedAuthority("pay")));
-            }
-            else
-            {
-                throw new IllegalStateException();
-            }
+            userDetails=accountUserDetailsService.loadUserByUsername(claims.get("username").toString());
+            return new UsernamePasswordAuthenticationToken(userDetails.getUsername(),userDetails.getPassword(),userDetails.getAuthorities());
         }
         catch (JwtException j)
         {

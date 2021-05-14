@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 
 @Configuration
@@ -38,13 +39,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                 .cors(httpSecurityCorsConfigurer -> {
                     httpSecurityCorsConfigurer.disable();
                 })
-                //.addFilterAt(authenticationFilter, BasicAuthenticationFilter.class)
+                .addFilterAt(authenticationFilter, BasicAuthenticationFilter.class)
                 .csrf()
                 .disable()
                 .httpBasic()
                 .disable()
                 .authorizeRequests()
-                .mvcMatchers("/buyer").permitAll()
+                .mvcMatchers("/buyer","buyer/authenticate","admin/authenticate").permitAll()
+                .mvcMatchers("/admin/activate").hasAuthority("admin")
                 .anyRequest().authenticated();
     }
     @Bean

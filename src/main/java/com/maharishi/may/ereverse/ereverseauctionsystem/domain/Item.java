@@ -23,10 +23,8 @@ public class Item {
     public Item() {
     }
 
-    public Item(String specification, BigDecimal leastPrice, Date decisionDate) {
+    public Item(String specification) {
         this.specification = specification;
-        this.leastPrice = leastPrice;
-        this.decisionDate = decisionDate;
     }
 
     public Long getId() {

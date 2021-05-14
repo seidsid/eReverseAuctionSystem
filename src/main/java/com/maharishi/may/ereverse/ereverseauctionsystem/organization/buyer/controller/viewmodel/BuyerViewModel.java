@@ -1,4 +1,4 @@
-package com.maharishi.may.ereverse.ereverseauctionsystem.buyer.controller.viewmodel;
+package com.maharishi.may.ereverse.ereverseauctionsystem.organization.buyer.controller.viewmodel;
 
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Address;
 import org.hibernate.validator.constraints.Length;

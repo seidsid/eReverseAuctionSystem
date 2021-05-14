@@ -1,6 +1,7 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -13,15 +14,21 @@ public class Auction {
     private Date postDate;
     private Date closureDate;
 
-    @OneToMany
+    @OneToMany(mappedBy = "auction",cascade = CascadeType.ALL)
     List<Item> items;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Buyer buyer;
+
     public Auction() {
+        items=new ArrayList<>();
     }
 
-    public Auction(Date postDate, Date closureDate) {
+    public Auction(Date postDate, Date closureDate,List<Item> items) {
         this.postDate = postDate;
         this.closureDate = closureDate;
+        this.items=items;
+        items.forEach(item -> item.setAuction(this));
     }
 
     public Long getId() {
@@ -52,7 +59,15 @@ public class Auction {
         return items;
     }
 
-    public void setItems(List<Item> items) {
-        this.items = items;
+    public void addItem(Item item) {
+        this.items.add(item);
+    }
+
+    public Buyer getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Buyer buyer) {
+        this.buyer = buyer;
     }
 }
