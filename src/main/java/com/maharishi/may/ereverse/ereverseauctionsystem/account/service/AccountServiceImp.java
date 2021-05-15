@@ -2,7 +2,6 @@ package com.maharishi.may.ereverse.ereverseauctionsystem.account.service;
 
 import com.maharishi.may.ereverse.ereverseauctionsystem.account.DuplicateAccountException;
 import com.maharishi.may.ereverse.ereverseauctionsystem.account.repository.AccountRepository;
-import com.maharishi.may.ereverse.ereverseauctionsystem.account.service.AccountService;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Account;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Organization;
 import org.springframework.stereotype.Service;

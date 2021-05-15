@@ -1,10 +1,8 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.admin.controller;
 
 import com.maharishi.may.ereverse.ereverseauctionsystem.admin.service.AdminService;
-import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Account;
 import com.maharishi.may.ereverse.ereverseauctionsystem.security.JWTService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;

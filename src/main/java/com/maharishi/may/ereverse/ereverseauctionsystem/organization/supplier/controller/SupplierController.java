@@ -1,7 +1,7 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.organization.supplier.controller;
 
-import com.maharishi.may.ereverse.ereverseauctionsystem.account.service.AccountService;
 import com.maharishi.may.ereverse.ereverseauctionsystem.account.DuplicateAccountException;
+import com.maharishi.may.ereverse.ereverseauctionsystem.account.service.AccountService;
 import com.maharishi.may.ereverse.ereverseauctionsystem.auction.ClosedAuctionException;
 import com.maharishi.may.ereverse.ereverseauctionsystem.auction.service.AuctionService;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Account;
@@ -14,7 +14,6 @@ import com.maharishi.may.ereverse.ereverseauctionsystem.security.JWTService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.validation.BindingResult;
@@ -73,8 +72,8 @@ public class SupplierController {
                 return ResponseEntity.badRequest().body(Map.of("reason","price must be available"));
             }
             BigDecimal price=new BigDecimal(request.get("price"));
-            auctionService.bid(itemId,price,principal.getName());
-            return ResponseEntity.ok(Map.of("result","ok"));
+            long rank=auctionService.bid(itemId,price,principal.getName());
+            return ResponseEntity.ok(Map.of("rank",Long.toString(rank)));
         }
         catch (NumberFormatException nfe)
         {

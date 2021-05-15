@@ -14,7 +14,7 @@ public class Auction {
     private Date postDate;
     private Date closureDate;
 
-    @OneToMany(mappedBy = "auction",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "auction",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     List<Item> items;
 
     @ManyToOne(cascade = CascadeType.ALL)

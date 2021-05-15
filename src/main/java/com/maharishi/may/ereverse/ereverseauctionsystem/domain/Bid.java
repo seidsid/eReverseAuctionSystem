@@ -72,4 +72,10 @@ public class Bid {
     public void setAuction(Auction auction) {
         this.auction = auction;
     }
+    @Override
+    public boolean equals(Object other)
+    {
+        if(!other.getClass().isAssignableFrom(Bid.class))return false;
+        return ((Bid)other).getId().equals(getId());
+    }
 }

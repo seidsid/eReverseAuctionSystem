@@ -1,7 +1,7 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.organization.buyer.controller;
 
-import com.maharishi.may.ereverse.ereverseauctionsystem.account.service.AccountService;
 import com.maharishi.may.ereverse.ereverseauctionsystem.account.DuplicateAccountException;
+import com.maharishi.may.ereverse.ereverseauctionsystem.account.service.AccountService;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Account;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Auction;
 import com.maharishi.may.ereverse.ereverseauctionsystem.domain.Buyer;
@@ -13,7 +13,6 @@ import com.maharishi.may.ereverse.ereverseauctionsystem.organization.buyer.servi
 import com.maharishi.may.ereverse.ereverseauctionsystem.security.JWTService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;

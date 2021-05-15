@@ -5,6 +5,7 @@ import com.maharishi.may.ereverse.ereverseauctionsystem.auction.ClosedAuctionExc
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -85,6 +86,28 @@ public class Item {
     public void bid(Bid bid)throws ClosedAuctionException
     {
         if(!getAuction().isOpen())throw new ClosedAuctionException("auction is close");
-        this.bids.add(bid);
+        bids.stream().filter(bid1 -> bid1.getSupplier().getAccount().getUserName().equals(bid.getSupplier().getAccount().getUserName())).findFirst().ifPresentOrElse(bid1->{
+            bid1.setPrice(bid.getPrice());
+        },()->{
+            this.bids.add(bid);
+        });
+    }
+    public long calculateRank(Bid bid)
+    {
+        return bids.stream().filter(bid1 ->bid1.getPrice().compareTo(bid.getPrice())<1).count();
+    }
+    public void identifyWinner()
+    {
+        if(supplier!=null)
+        {
+            bids.stream().min(Comparator.comparing(Bid::getPrice)).ifPresent(bid -> {
+                leastPrice=bid.getPrice();
+                supplier=bid.getSupplier();
+            });
+        }
+    }
+
+    public List<Bid> getBids() {
+        return bids;
     }
 }
