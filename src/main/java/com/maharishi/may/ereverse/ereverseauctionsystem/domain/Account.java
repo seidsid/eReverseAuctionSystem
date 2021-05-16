@@ -1,6 +1,7 @@
 package com.maharishi.may.ereverse.ereverseauctionsystem.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -16,7 +17,7 @@ public class Account {
     private String userName;
 
     @OneToMany(mappedBy = "account",cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
-    List<Role> roles;
+    List<Role> roles=new ArrayList<>();
 
     @Embedded
     private Address address;

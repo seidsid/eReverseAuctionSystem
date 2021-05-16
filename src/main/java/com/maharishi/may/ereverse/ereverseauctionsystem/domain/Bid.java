@@ -52,7 +52,9 @@ public class Bid {
     public Supplier getSupplier() {
         return supplier;
     }
-
+    public String getSupplierUsername(){
+        return supplier.getAccount().getUserName();
+    }
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
     }

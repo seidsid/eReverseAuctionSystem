@@ -39,7 +39,11 @@ public class AccountServiceImp implements AccountService {
 
     @Override
     public Account findByUsernameAndPassword(String username, String password) {
-        return accountRepository.findByUserNameAndPassword(username,password);
+        Account account= accountRepository.findByUserName(username);
+        if(account==null)return null;
+        else{
+            return account.getPassword().equals(password)?account:null;
+        }
     }
 
     @Override

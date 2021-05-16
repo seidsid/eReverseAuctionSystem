@@ -16,20 +16,10 @@ import java.util.Date;
 @Service
 @Transactional
 public class BuyerService {
-    private BuyerRepository buyerRepository;
     private AccountService accountService;
-    private AuctionRepository auctionRepository;
     @Autowired
-    public BuyerService(BuyerRepository buyerRepository, AccountService accountService, AuctionRepository auctionRepository) {
-        this.buyerRepository = buyerRepository;
+    public BuyerService(AccountService accountService) {
         this.accountService=accountService;
-        this.auctionRepository=auctionRepository;
-    }
-    public Account authenticate(String username, String password)
-    {
-        Account account=accountService.findByUsernameAndPassword(username,password);
-        if(account!=null&&account.hasRole("buyer")&&((Organization)account.getRole("buyer").orElse(null)).isActivated())return account;
-        return null;
     }
     public void postAuction(Auction auction,String buyerUsername)
     {

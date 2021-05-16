@@ -83,10 +83,9 @@ public class Item {
         this.auction = auction;
     }
 
-    public void bid(Bid bid)throws ClosedAuctionException
-    {
+    public void bid(Bid bid)throws ClosedAuctionException {
         if(!getAuction().isOpen())throw new ClosedAuctionException("auction is close");
-        bids.stream().filter(bid1 -> bid1.getSupplier().getAccount().getUserName().equals(bid.getSupplier().getAccount().getUserName())).findFirst().ifPresentOrElse(bid1->{
+        bids.stream().filter(bid1 -> bid1.getSupplierUsername().equals(bid.getSupplierUsername())).findFirst().ifPresentOrElse(bid1->{
             bid1.setPrice(bid.getPrice());
         },()->{
             this.bids.add(bid);
@@ -96,15 +95,16 @@ public class Item {
     {
         return bids.stream().filter(bid1 ->bid1.getPrice().compareTo(bid.getPrice())<1).count();
     }
-    public void identifyWinner()
+    public Supplier identifyWinner()
     {
-        if(supplier!=null)
+        if(supplier==null)
         {
             bids.stream().min(Comparator.comparing(Bid::getPrice)).ifPresent(bid -> {
                 leastPrice=bid.getPrice();
                 supplier=bid.getSupplier();
             });
         }
+        return supplier;
     }
 
     public List<Bid> getBids() {
